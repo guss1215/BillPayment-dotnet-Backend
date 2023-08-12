@@ -12,12 +12,12 @@ namespace BasicBilling.API.Models
         public int ClientId { get; set; }
 
         [Required]
-        public string ServiceType { get; set; }
+        public int Period { get; set; }
 
         [Required]
-        public string MonthYear { get; set; }
+        public string Category { get; set; }
 
         [Required]
-        public bool IsPaid { get; set; } // Pending or Paid
+        public bool IsPaid { get; set; }
     }
 }
