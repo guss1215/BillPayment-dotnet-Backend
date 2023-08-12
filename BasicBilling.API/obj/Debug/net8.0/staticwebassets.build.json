@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "dA7mRpX/bbRZgQLlbxTTUc0tI9LM95kSP9aMiUytM2I=",
+  "Source": "BasicBilling.API",
+  "BasePath": "_content/BasicBilling.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
