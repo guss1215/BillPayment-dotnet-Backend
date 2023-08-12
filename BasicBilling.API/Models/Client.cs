@@ -1,3 +1,6 @@
+using System;
+using System.ComponentModel.DataAnnotations;
+
 namespace BasicBilling.API.Models
 {
     public class Client
