@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "d1BnsjYhkJKwuYxtKeEsTlo3xqhhxCb6JMwSFKcc5zWFJKSCTzkcVB6DNeXlMN2dffrTIH7wWbc85puUMt8gvQ==",
+  "dgSpecHash": "1fAUlZdfVTj7HukVfWQvdOrqplxqOStuNsJF5BvaNk6BD/2BEHsMEuA+OhNxSlr4/bui5mwQuvKU/Wl6on4zWg==",
   "success": true,
   "projectFilePath": "E:\\Samuel Rioja TEST\\BackendTest\\BasicBilling.API\\BasicBilling.API.csproj",
   "expectedPackageFiles": [
@@ -14,6 +14,7 @@
     "C:\\Users\\Guss\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\7.0.10\\microsoft.entityframeworkcore.relational.7.0.10.nupkg.sha512",
     "C:\\Users\\Guss\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite\\7.0.10\\microsoft.entityframeworkcore.sqlite.7.0.10.nupkg.sha512",
     "C:\\Users\\Guss\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite.core\\7.0.10\\microsoft.entityframeworkcore.sqlite.core.7.0.10.nupkg.sha512",
+    "C:\\Users\\Guss\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\5.0.0\\microsoft.entityframeworkcore.tools.5.0.0.nupkg.sha512",
     "C:\\Users\\Guss\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\Guss\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\7.0.0\\microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\Guss\\.nuget\\packages\\microsoft.extensions.caching.memory\\7.0.0\\microsoft.extensions.caching.memory.7.0.0.nupkg.sha512",

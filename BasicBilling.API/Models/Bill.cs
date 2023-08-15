@@ -18,6 +18,6 @@ namespace BasicBilling.API.Models
         public string Category { get; set; }
 
         [Required]
-        public bool IsPaid { get; set; }
+        public string PaymentStatus { get; set; }
     }
 }

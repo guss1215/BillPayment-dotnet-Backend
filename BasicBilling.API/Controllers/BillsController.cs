@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using BasicBilling.API.Models;
 using System.Linq;
+using System.Diagnostics;
 
 namespace BasicBilling.API.Controllers
 {
@@ -16,57 +17,31 @@ namespace BasicBilling.API.Controllers
         }
 
         // endpoints
-        [HttpPost("payment")]
-        public IActionResult ProcessBillPayment([FromBody] BillPaymentRequest request)
-        {
-            // Validate the request, update the bill state, etc
-            if (request == null)
-            {
-                return BadRequest("Invalid request.");
-            }
-
-            var bill = _dbContext.Bills.FirstOrDefault(
-                b =>
-                    b.ClientId == request.ClientId
-                    && b.Category == request.Category
-                    && b.Period == request.Period
-            );
-
-            if (bill == null)
-            {
-                return NotFound("Bill not found.");
-            }
-
-            if (bill.IsPaid)
-            {
-                return BadRequest("Bill is already paid.");
-            }
-
-            // Update the bill's IsPaid status
-            bill.IsPaid = true;
-            _dbContext.SaveChanges();
-
-            return Ok(new { Message = "Payment processed successfully." });
-        }
 
         [HttpPost("bills")]
         public IActionResult CreateBill([FromBody] BillPaymentRequest request)
         {
             if (ModelState.IsValid)
             {
-                // Create a new bill based on the request data
-                Bill newBill = new Bill
-                {
-                    ClientId = request.ClientId,
-                    Period = request.Period,
-                    Category = request.Category,
-                    IsPaid = false // Assuming the bill starts as unpaid
-                };
+                var clients = _dbContext.Clients.ToList(); // Fetch all clients from the database
 
-                _dbContext.Bills.Add(newBill);
+                foreach (var client in clients)
+                {
+                    // Create a new bill for each client
+                    Bill newBill = new Bill
+                    {
+                        ClientId = client.Id,
+                        Period = request.Period,
+                        Category = request.Category,
+                        PaymentStatus = "Pending" // Bills start as unpaid
+                    };
+
+                    _dbContext.Bills.Add(newBill);
+                }
+
                 _dbContext.SaveChanges();
 
-                return Ok(new { Message = "Bill created successfully." });
+                return Ok(new { Message = "Bills created successfully for all clients." });
             }
 
             return BadRequest(ModelState);
@@ -76,7 +51,7 @@ namespace BasicBilling.API.Controllers
         public IActionResult GetPendingBills(int clientId)
         {
             var pendingBills = _dbContext.Bills
-                .Where(b => b.ClientId == clientId && !b.IsPaid)
+                .Where(b => b.ClientId == clientId && b.PaymentStatus == "Pending")
                 .ToList();
 
             return Ok(pendingBills);
@@ -96,7 +71,7 @@ namespace BasicBilling.API.Controllers
 
             foreach (var bill in paidBills)
             {
-                bill.IsPaid = true;
+                bill.PaymentStatus = "Paid";
             }
 
             _dbContext.SaveChanges();
