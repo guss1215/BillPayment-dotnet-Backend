@@ -19,15 +19,24 @@ namespace BasicBilling.API
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<BillingDbContext>(options =>
-                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<BillingDbContext>(
+                options => options.UseSqlite(Configuration.GetConnectionString("DefaultConnection"))
+            );
 
             services.AddControllers();
             // Add other services...
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(builder =>
+                {
+                    builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+                });
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCors();
 
             app.UseRouting();
 
@@ -39,4 +48,3 @@ namespace BasicBilling.API
         }
     }
 }
-

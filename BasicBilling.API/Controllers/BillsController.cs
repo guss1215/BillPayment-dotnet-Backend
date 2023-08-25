@@ -86,5 +86,16 @@ namespace BasicBilling.API.Controllers
 
             return Ok(bills);
         }
+
+        [HttpGet("payment-history")]
+        public IActionResult GetClientPaymentHistory(int clientId)
+        {
+            var paymentHistory = _dbContext.Bills
+                .Where(b => b.ClientId == clientId)
+                .OrderByDescending(b => b.Period)
+                .ToList();
+
+            return Ok(paymentHistory);
+        }
     }
 }
