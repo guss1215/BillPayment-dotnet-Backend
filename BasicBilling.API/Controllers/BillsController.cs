@@ -97,5 +97,15 @@ namespace BasicBilling.API.Controllers
 
             return Ok(paymentHistory);
         }
+
+        [HttpGet("check-bill-exists")]
+        public IActionResult CheckBillExists(int period, string category)
+        {
+            var billExists = _dbContext.Bills.Any(
+                b => b.Period == period && b.Category == category
+            );
+
+            return Ok(billExists);
+        }
     }
 }
